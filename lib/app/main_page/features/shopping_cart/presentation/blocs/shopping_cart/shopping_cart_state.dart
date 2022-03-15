@@ -15,3 +15,11 @@ class ShoppingCartItemAdded extends ShoppingCartState{
   const ShoppingCartItemAdded(this.shoppingCartList);
 
 }
+
+class ShoppingCartItemRemoved extends ShoppingCartState{
+
+  final List<PastryModel> shoppingCartList;
+
+  const ShoppingCartItemRemoved(this.shoppingCartList);
+
+}

@@ -30,6 +30,8 @@ class _$PastryModelTearOff {
       required PastryType pastryType,
       required String calories,
       required String deliveryTime,
+      num quantity = 1,
+      bool addedToCart = false,
       String detail = '',
       bool favourite = false}) {
     return _PastryModel(
@@ -40,6 +42,8 @@ class _$PastryModelTearOff {
       pastryType: pastryType,
       calories: calories,
       deliveryTime: deliveryTime,
+      quantity: quantity,
+      addedToCart: addedToCart,
       detail: detail,
       favourite: favourite,
     );
@@ -62,6 +66,8 @@ mixin _$PastryModel {
   PastryType get pastryType => throw _privateConstructorUsedError;
   String get calories => throw _privateConstructorUsedError;
   String get deliveryTime => throw _privateConstructorUsedError;
+  num get quantity => throw _privateConstructorUsedError;
+  bool get addedToCart => throw _privateConstructorUsedError;
   String get detail => throw _privateConstructorUsedError;
   bool get favourite => throw _privateConstructorUsedError;
 
@@ -84,6 +90,8 @@ abstract class $PastryModelCopyWith<$Res> {
       PastryType pastryType,
       String calories,
       String deliveryTime,
+      num quantity,
+      bool addedToCart,
       String detail,
       bool favourite});
 }
@@ -105,6 +113,8 @@ class _$PastryModelCopyWithImpl<$Res> implements $PastryModelCopyWith<$Res> {
     Object? pastryType = freezed,
     Object? calories = freezed,
     Object? deliveryTime = freezed,
+    Object? quantity = freezed,
+    Object? addedToCart = freezed,
     Object? detail = freezed,
     Object? favourite = freezed,
   }) {
@@ -137,6 +147,14 @@ class _$PastryModelCopyWithImpl<$Res> implements $PastryModelCopyWith<$Res> {
           ? _value.deliveryTime
           : deliveryTime // ignore: cast_nullable_to_non_nullable
               as String,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as num,
+      addedToCart: addedToCart == freezed
+          ? _value.addedToCart
+          : addedToCart // ignore: cast_nullable_to_non_nullable
+              as bool,
       detail: detail == freezed
           ? _value.detail
           : detail // ignore: cast_nullable_to_non_nullable
@@ -164,6 +182,8 @@ abstract class _$PastryModelCopyWith<$Res>
       PastryType pastryType,
       String calories,
       String deliveryTime,
+      num quantity,
+      bool addedToCart,
       String detail,
       bool favourite});
 }
@@ -187,6 +207,8 @@ class __$PastryModelCopyWithImpl<$Res> extends _$PastryModelCopyWithImpl<$Res>
     Object? pastryType = freezed,
     Object? calories = freezed,
     Object? deliveryTime = freezed,
+    Object? quantity = freezed,
+    Object? addedToCart = freezed,
     Object? detail = freezed,
     Object? favourite = freezed,
   }) {
@@ -219,6 +241,14 @@ class __$PastryModelCopyWithImpl<$Res> extends _$PastryModelCopyWithImpl<$Res>
           ? _value.deliveryTime
           : deliveryTime // ignore: cast_nullable_to_non_nullable
               as String,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as num,
+      addedToCart: addedToCart == freezed
+          ? _value.addedToCart
+          : addedToCart // ignore: cast_nullable_to_non_nullable
+              as bool,
       detail: detail == freezed
           ? _value.detail
           : detail // ignore: cast_nullable_to_non_nullable
@@ -242,6 +272,8 @@ class _$_PastryModel implements _PastryModel {
       required this.pastryType,
       required this.calories,
       required this.deliveryTime,
+      this.quantity = 1,
+      this.addedToCart = false,
       this.detail = '',
       this.favourite = false});
 
@@ -264,6 +296,12 @@ class _$_PastryModel implements _PastryModel {
   final String deliveryTime;
   @JsonKey()
   @override
+  final num quantity;
+  @JsonKey()
+  @override
+  final bool addedToCart;
+  @JsonKey()
+  @override
   final String detail;
   @JsonKey()
   @override
@@ -271,7 +309,7 @@ class _$_PastryModel implements _PastryModel {
 
   @override
   String toString() {
-    return 'PastryModel(name: $name, image: $image, rating: $rating, price: $price, pastryType: $pastryType, calories: $calories, deliveryTime: $deliveryTime, detail: $detail, favourite: $favourite)';
+    return 'PastryModel(name: $name, image: $image, rating: $rating, price: $price, pastryType: $pastryType, calories: $calories, deliveryTime: $deliveryTime, quantity: $quantity, addedToCart: $addedToCart, detail: $detail, favourite: $favourite)';
   }
 
   @override
@@ -288,6 +326,9 @@ class _$_PastryModel implements _PastryModel {
             const DeepCollectionEquality().equals(other.calories, calories) &&
             const DeepCollectionEquality()
                 .equals(other.deliveryTime, deliveryTime) &&
+            const DeepCollectionEquality().equals(other.quantity, quantity) &&
+            const DeepCollectionEquality()
+                .equals(other.addedToCart, addedToCart) &&
             const DeepCollectionEquality().equals(other.detail, detail) &&
             const DeepCollectionEquality().equals(other.favourite, favourite));
   }
@@ -302,6 +343,8 @@ class _$_PastryModel implements _PastryModel {
       const DeepCollectionEquality().hash(pastryType),
       const DeepCollectionEquality().hash(calories),
       const DeepCollectionEquality().hash(deliveryTime),
+      const DeepCollectionEquality().hash(quantity),
+      const DeepCollectionEquality().hash(addedToCart),
       const DeepCollectionEquality().hash(detail),
       const DeepCollectionEquality().hash(favourite));
 
@@ -325,6 +368,8 @@ abstract class _PastryModel implements PastryModel {
       required PastryType pastryType,
       required String calories,
       required String deliveryTime,
+      num quantity,
+      bool addedToCart,
       String detail,
       bool favourite}) = _$_PastryModel;
 
@@ -345,6 +390,10 @@ abstract class _PastryModel implements PastryModel {
   String get calories;
   @override
   String get deliveryTime;
+  @override
+  num get quantity;
+  @override
+  bool get addedToCart;
   @override
   String get detail;
   @override

@@ -15,6 +15,8 @@ _$_PastryModel _$$_PastryModelFromJson(Map<String, dynamic> json) =>
       pastryType: $enumDecode(_$PastryTypeEnumMap, json['pastryType']),
       calories: json['calories'] as String,
       deliveryTime: json['deliveryTime'] as String,
+      quantity: json['quantity'] as num? ?? 1,
+      addedToCart: json['addedToCart'] as bool? ?? false,
       detail: json['detail'] as String? ?? '',
       favourite: json['favourite'] as bool? ?? false,
     );
@@ -28,6 +30,8 @@ Map<String, dynamic> _$$_PastryModelToJson(_$_PastryModel instance) =>
       'pastryType': _$PastryTypeEnumMap[instance.pastryType],
       'calories': instance.calories,
       'deliveryTime': instance.deliveryTime,
+      'quantity': instance.quantity,
+      'addedToCart': instance.addedToCart,
       'detail': instance.detail,
       'favourite': instance.favourite,
     };

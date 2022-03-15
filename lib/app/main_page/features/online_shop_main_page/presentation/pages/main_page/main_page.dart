@@ -8,6 +8,7 @@ import 'package:online_shop_app/app/main_page/features/online_shop_main_page/pre
 import 'package:online_shop_app/app/main_page/features/online_shop_main_page/presentation/pages/main_page/main_page_view_model.dart';
 import 'package:online_shop_app/app/main_page/features/online_shop_main_page/presentation/widgets/cart_display/cart_display.dart';
 import 'package:online_shop_app/app/main_page/features/online_shop_main_page/presentation/widgets/home_display_item.dart';
+import 'package:online_shop_app/core/enums/pastry_type.dart';
 import 'package:online_shop_app/styles/color.dart';
 import 'package:online_shop_app/utils/navigation_service.dart';
 
@@ -112,10 +113,12 @@ class MainPage extends StatelessWidget {
 
               HomeDisplayItem(
                 title: 'Over Popular Items',
-                onTap: (pastery){
+                onTap: (pastery, index){
                   navigate(context, DetailsPage(
                     image: 'assets/images/raster/doughnut.jpg',
                     pastry: pastery,
+                    index: index,
+                    pastryType: PastryType.OVERPOPULAR,
                   ));
                 },
                 pastries: overPopularItems,
@@ -123,10 +126,12 @@ class MainPage extends StatelessWidget {
 
               HomeDisplayItem(
                 title: 'Recommended',
-                onTap: (pastery){
+                onTap: (pastery, index){
                   navigate(context, DetailsPage(
                     image: 'assets/images/raster/doughnut.jpg',
                     pastry: pastery,
+                    index: index,
+                    pastryType: PastryType.RECOMMENDED,
                   ));
                 },
                 pastries: recommended,
@@ -134,10 +139,12 @@ class MainPage extends StatelessWidget {
 
               HomeDisplayItem(
                 title: "Today's Special",
-                onTap: (pastery){
+                onTap: (pastery, index){
                   navigate(context, DetailsPage(
                     image: 'assets/images/raster/doughnut.jpg',
                     pastry: pastery,
+                    index: index,
+                    pastryType: PastryType.TODAYSPECIAL,
                   ));
                 },
                 pastries: todaySpecial,

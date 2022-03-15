@@ -14,6 +14,8 @@ class PastryModel with _$PastryModel{
     required PastryType pastryType,
     required String calories,
     required String deliveryTime,
+    @Default(1) num quantity,
+    @Default(false) bool addedToCart,
     @Default('') String detail,
     @Default(false) bool favourite
   }) = _PastryModel;

@@ -12,5 +12,10 @@ class ShoppingCartRepoImpl implements ShoppingCartRepo{
     return shoppingCartDataSource.addToCart(pastryModel, shoppingCartList);
   }
 
+  @override
+  List<PastryModel> removeFromCart(PastryModel pastryModel, List<PastryModel> shoppingCartList) {
+    return shoppingCartDataSource.removeFromCart(pastryModel, shoppingCartList);
+  }
+
 
 }

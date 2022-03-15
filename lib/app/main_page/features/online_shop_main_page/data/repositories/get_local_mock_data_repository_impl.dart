@@ -12,4 +12,9 @@ class GetLocalMockDataRepositoryImpl implements GetLocalMockDataRepository{
     return localMockDataSource.getAllPateries();
   }
 
+  @override
+  List<PastryModel> updatePasteryInList(int indexOfPastery, List<PastryModel> pastery, PastryModel pasteryToUpdate) {
+    return localMockDataSource.updatePasteryInList(indexOfPastery, pastery, pasteryToUpdate);
+  }
+
 }

@@ -153,4 +153,16 @@ class LocalMockDataSourceImpl implements LocalMockDataSource{
     throw UnimplementedError();
   }
 
+  @override
+  List<PastryModel> updatePasteryInList(
+      int indexOfPastery,
+      List<PastryModel> pastery,
+      PastryModel pastryToUpdate
+      ) {
+    pastery[indexOfPastery] = pastryToUpdate;
+    return pastery;
+  }
+
+
+
 }

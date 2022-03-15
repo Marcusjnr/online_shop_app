@@ -6,4 +6,9 @@ abstract class ShoppingCartDataSource{
       PastryModel pastryModel,
       List<PastryModel> shoppingCartList
       );
+
+  List<PastryModel> removeFromCart(
+      PastryModel pastryModel,
+      List<PastryModel> shoppingCartList
+      );
 }

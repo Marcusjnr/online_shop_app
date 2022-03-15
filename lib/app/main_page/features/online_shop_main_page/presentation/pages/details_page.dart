@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:online_shop_app/app/main_page/features/online_shop_main_page/data/models/pastry_model.dart';
+import 'package:online_shop_app/app/main_page/features/online_shop_main_page/presentation/bloc/get_local_mock_data/get_local_mock_data_cubit.dart';
 import 'package:online_shop_app/app/main_page/features/online_shop_main_page/presentation/widgets/cart_display/cart_display.dart';
 import 'package:online_shop_app/app/main_page/features/shopping_cart/presentation/blocs/shopping_cart/shopping_cart_cubit.dart';
+import 'package:online_shop_app/core/enums/pastry_type.dart';
 import 'package:online_shop_app/styles/color.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:online_shop_app/utils/navigation_service.dart';
 
 class DetailsPage extends StatelessWidget {
   final String image;
   final PastryModel pastry;
+  final int index;
+  final PastryType pastryType;
 
   const DetailsPage({
     Key? key,
     required this.image,
-    required this.pastry
+    required this.pastry,
+    required this.index,
+    required this.pastryType
   }) : super(key: key);
 
   @override
@@ -198,20 +204,51 @@ class DetailsPage extends StatelessWidget {
                             Expanded(
                               child: GestureDetector(
                                 onTap: (){
-                                  BlocProvider.of<ShoppingCartCubit>(context).addToShoppingCart(pastry);
+                                  if(pastry.addedToCart){
+                                    BlocProvider.of<ShoppingCartCubit>(context)
+                                        .removeFromShoppingCart(
+                                        pastry,
+                                        index,
+                                        _decideList(context)
+                                    );
+                                    Fluttertoast.showToast(
+                                        msg: "Item Removed To Cart",
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.CENTER,
+                                        timeInSecForIosWeb: 1,
+                                        backgroundColor: AppColors.primaryColor
+                                    );
+                                  }else{
+                                    BlocProvider.of<ShoppingCartCubit>(context)
+                                        .addToShoppingCart(
+                                        pastry,
+                                        index,
+                                        _decideList(context)
+                                    );
+
+                                    Fluttertoast.showToast(
+                                        msg: "Item Added To Cart",
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.CENTER,
+                                        timeInSecForIosWeb: 1,
+                                        backgroundColor: AppColors.primaryColor
+                                    );
+                                  }
+
+                                  popView(context);
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(32),
                                     border: Border.all(
                                         color: AppColors.primaryColor,
-                                      width: 1.6
+                                        width: 1.6
                                     ),
                                   ),
                                   padding: const EdgeInsets.all(14),
                                   child: Center(
                                     child: Text(
-                                      'Add To Cart',
+                                      pastry.addedToCart ? 'Remove From Cart' : 'Add To Cart',
                                       style: Theme.of(context).textTheme
                                           .headline2?.copyWith(color: AppColors.primaryColor),
                                     ),
@@ -226,47 +263,7 @@ class DetailsPage extends StatelessWidget {
                 ),
             ),
 
-            Positioned(
-                right: size.width * .38,
-                top: size.height * .56,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryColor,
-                    borderRadius: BorderRadius.circular(32)
-                  ),
-                  padding: const EdgeInsets.only(
-                    top: 8,
-                    right: 12,
-                    bottom: 8,
-                    left: 12
-                  ),
-                  child: Row(
-                    children: [
-                      const Icon(
-                        FeatherIcons.minus,
-                        color: Colors.white,
-                        size: 14,
-                      ),
 
-                      const SizedBox(width: 16,),
-
-                      Text(
-                        '0',
-                        style: Theme.of(context).textTheme
-                            .headline2?.copyWith(color: Colors.white),
-                      ),
-
-                      const SizedBox(width: 16,),
-
-                      const Icon(
-                        Icons.add,
-                        color: Colors.white,
-                        size: 18,
-                      ),
-                    ],
-                  ),
-                )
-            ),
 
             Positioned(
               left: 18,
@@ -289,7 +286,7 @@ class DetailsPage extends StatelessWidget {
                 )
             ),
 
-            Positioned(
+           const Positioned(
               right: 18,
                 top: 40,
                 child: CartDisplay()
@@ -311,5 +308,17 @@ class DetailsPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  List<PastryModel> _decideList(BuildContext context){
+    GetLocalMockDataCubit localMockDataCubit = BlocProvider.of<GetLocalMockDataCubit>(context);
+
+    if(pastryType == PastryType.TODAYSPECIAL){
+      return localMockDataCubit.todaySpecialPasteryList;
+    }else if(pastryType == PastryType.RECOMMENDED){
+      return localMockDataCubit.recommendedPasteryList;
+    }else{
+      return localMockDataCubit.overPopularPasteryList;
+    }
   }
 }

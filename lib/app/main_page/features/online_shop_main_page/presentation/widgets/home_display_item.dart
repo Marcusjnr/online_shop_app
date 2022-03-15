@@ -4,7 +4,7 @@ import 'package:online_shop_app/app/main_page/features/online_shop_main_page/pre
 
 class HomeDisplayItem extends StatelessWidget {
   final List<PastryModel>? pastries;
-  final Function(PastryModel) onTap;
+  final Function(PastryModel, int) onTap;
   final String title;
 
   const HomeDisplayItem({
@@ -40,7 +40,7 @@ class HomeDisplayItem extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => ItemsContainer(
                 onTap:(){
-                  onTap(pastries![index]);
+                  onTap(pastries![index], index);
                 },
                 pastry: pastries![index],
               )
