@@ -1,0 +1,1 @@
+const String PASTRIES_ITEM_STORAGE_DB = 'pastries.db';
