@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:online_shop_app/app/main_page/features/online_shop_main_page/presentation/pages/main_page/main_page.dart';
 import 'package:online_shop_app/app/main_page/features/shopping_cart/presentation/blocs/shopping_cart/shopping_cart_cubit.dart';
+import 'app/main_page/features/online_shop_main_page/presentation/bloc/favourite_bloc/favourite_cubit.dart';
 import 'app/main_page/features/online_shop_main_page/presentation/bloc/get_local_mock_data/get_local_mock_data_cubit.dart';
 import 'injection_container.dart' as di;
 
@@ -26,6 +27,10 @@ class MyApp extends StatelessWidget {
 
           BlocProvider(
             create: (_) => di.sl<ShoppingCartCubit>(),
+          ),
+
+          BlocProvider(
+            create: (_) => di.sl<FavouriteCubit>(),
           ),
         ],
         child: MaterialApp(

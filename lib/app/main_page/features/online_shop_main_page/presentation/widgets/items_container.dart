@@ -4,12 +4,16 @@ import 'package:online_shop_app/styles/color.dart';
 
 class ItemsContainer extends StatelessWidget {
   final Function? onTap;
+  final Function favouriteTap;
   final PastryModel pastry;
+  final int index;
 
   const ItemsContainer({
     Key? key,
     this.onTap,
-    required this.pastry
+    required this.pastry,
+    required this.index,
+    required this.favouriteTap,
   }) : super(key: key);
 
   @override
@@ -28,9 +32,9 @@ class ItemsContainer extends StatelessWidget {
               height: 150,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(18),
-                  image: const DecorationImage(
+                  image: DecorationImage(
                       image: AssetImage(
-                        'assets/images/raster/doughnut.jpg',
+                        pastry.image,
                       ),
                       fit: BoxFit.cover
                   ),
@@ -38,6 +42,18 @@ class ItemsContainer extends StatelessWidget {
               ),
               child: Stack(
                 children: [
+                  Container(
+                    decoration:  BoxDecoration(
+                      borderRadius: BorderRadius.circular(18),
+                      gradient: const LinearGradient(
+                        begin: Alignment(0.0, -1.0),
+                        end: Alignment(0.0, 2),
+                        colors: [Color(0x00121212), Color(0xce121212)],
+                        stops: [0.0, 1.0],
+                      ),
+                    ),
+                  ),
+
                   Positioned(
                     right: 12,
                     bottom: 12,
@@ -67,6 +83,20 @@ class ItemsContainer extends StatelessWidget {
                         ],
                       ),
                     ),
+                  ),
+
+                  Positioned(
+                      right: 6,
+                      top: 8,
+                      child: GestureDetector(
+                        onTap: (){
+                          favouriteTap();
+                        },
+                        child: Icon(
+                          pastry.favourite ? Icons.favorite : Icons.favorite_outline_rounded,
+                          color: Colors.white,
+                        ),
+                      )
                   )
                 ],
               ),

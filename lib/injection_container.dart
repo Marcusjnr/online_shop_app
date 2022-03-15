@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:online_shop_app/app/main_page/features/online_shop_main_page/domain/repositories/get_local_mock_data_repository.dart';
 import 'package:online_shop_app/app/main_page/features/online_shop_main_page/domain/use_cases/update_pastery_in_list_usecase.dart';
+import 'package:online_shop_app/app/main_page/features/online_shop_main_page/presentation/bloc/favourite_bloc/favourite_cubit.dart';
 import 'package:online_shop_app/app/main_page/features/online_shop_main_page/presentation/bloc/get_local_mock_data/get_local_mock_data_cubit.dart';
 import 'package:online_shop_app/app/main_page/features/shopping_cart/data/repositories/shopping_cart_repo_impl.dart';
 import 'package:online_shop_app/app/main_page/features/shopping_cart/data/shopping_cart_data_source/shopping_cart_data_source.dart';
@@ -21,6 +22,10 @@ Future<void> init() async{
   //Blocs
   sl.registerFactory<GetLocalMockDataCubit>(() => GetLocalMockDataCubit(
     sl.call(),
+    sl.call(),
+  ));
+
+  sl.registerFactory<FavouriteCubit>(() => FavouriteCubit(
     sl.call(),
   ));
 

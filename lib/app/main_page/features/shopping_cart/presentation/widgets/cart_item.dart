@@ -8,11 +8,15 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 class CartItem extends StatelessWidget {
   final PastryModel pastry;
   final int index;
+  final Function addClicked;
+  final Function subtractClicked;
 
   const CartItem({
     Key? key,
     required this.pastry,
-    required this.index
+    required this.index,
+    required this.addClicked,
+    required this.subtractClicked
   }) : super(key: key);
 
   @override
@@ -45,12 +49,12 @@ class CartItem extends StatelessWidget {
             children: [
               Expanded(
                   child: Container(
-                    height: 100,
+                    height: 150,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6),
-                      image: const DecorationImage(
+                      image: DecorationImage(
                           image: AssetImage(
-                            'assets/images/raster/doughnut.jpg',),
+                            pastry.image,),
                           fit: BoxFit.cover
                       ),
                     ),
@@ -75,12 +79,15 @@ class CartItem extends StatelessWidget {
                         ],
                       ),
 
+                      const SizedBox(height: 20,),
                       Text(
-                        'Size',
+                        pastry.calories,
                         style: Theme.of(context).textTheme.subtitle2?.copyWith(
                             color: Colors.grey
                         ),
                       ),
+
+                      const SizedBox(height: 30,),
 
                       Row(
                         children: [
@@ -93,22 +100,28 @@ class CartItem extends StatelessWidget {
                           Expanded(
                               child: Row(
                                 children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                          color: AppColors.primaryColor),
-                                    ),
-                                    padding: const EdgeInsets.all(1.4),
-                                    child: const Center(
-                                      child: Icon(
-                                        FeatherIcons.minus,
-                                        color: AppColors.primaryColor,
+                                  GestureDetector(
+                                    onTap: (){
+                                      subtractClicked();
+                                    },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                            color: AppColors.primaryColor),
+                                      ),
+                                      padding: const EdgeInsets.all(1.4),
+                                      child: const Center(
+                                        child: Icon(
+                                          FeatherIcons.minus,
+                                          color: AppColors.primaryColor,
+                                        ),
                                       ),
                                     ),
                                   ),
 
                                   const SizedBox(width: 8,),
+
                                   Text(
                                     pastry.quantity.toString(),
                                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
@@ -118,17 +131,22 @@ class CartItem extends StatelessWidget {
 
                                   const SizedBox(width: 8,),
 
-                                  Container(
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: AppColors.primaryColor,
-                                    ),
-                                    padding: const EdgeInsets.all(4),
-                                    child: const Center(
-                                      child: Icon(
-                                        FeatherIcons.plus,
-                                        color: Colors.white,
-                                        size: 20,
+                                  GestureDetector(
+                                    onTap: (){
+                                      addClicked();
+                                    },
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: AppColors.primaryColor,
+                                      ),
+                                      padding: const EdgeInsets.all(4),
+                                      child: const Center(
+                                        child: Icon(
+                                          FeatherIcons.plus,
+                                          color: Colors.white,
+                                          size: 20,
+                                        ),
                                       ),
                                     ),
                                   ),

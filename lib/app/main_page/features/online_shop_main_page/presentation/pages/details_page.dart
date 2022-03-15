@@ -40,7 +40,7 @@ class DetailsPage extends StatelessWidget {
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage(
-                        image,
+                        pastry.image,
                       ),
                       fit: BoxFit.cover),
               ),
@@ -185,126 +185,64 @@ class DetailsPage extends StatelessWidget {
                       bottom: 18,
                         left: 18,
                         right: 18,
-                        child: Row(
-                          children: [
-                            Container(
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppColors.primaryColor
-                              ),
-                              padding: const EdgeInsets.all(10),
-                              child: const Icon(
-                                  Icons.favorite_outline_rounded,
-                                color: Colors.white,
-                                size: 20,
+                        child: GestureDetector(
+                          onTap: (){
+                            if(pastry.addedToCart){
+                              BlocProvider.of<ShoppingCartCubit>(context)
+                                  .removeFromShoppingCart(
+                                  pastry,
+                                  index,
+                                  _decideList(context)
+                              );
+                              Fluttertoast.showToast(
+                                  msg: "Item Removed To Cart",
+                                  toastLength: Toast.LENGTH_LONG,
+                                  gravity: ToastGravity.CENTER,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: AppColors.primaryColor
+                              );
+                            }else{
+                              BlocProvider.of<ShoppingCartCubit>(context)
+                                  .addToShoppingCart(
+                                  pastry,
+                                  index,
+                                  _decideList(context)
+                              );
+
+                              Fluttertoast.showToast(
+                                  msg: "Item Added To Cart",
+                                  toastLength: Toast.LENGTH_LONG,
+                                  gravity: ToastGravity.CENTER,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: AppColors.primaryColor
+                              );
+                            }
+
+                            popView(context);
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(32),
+                              border: Border.all(
+                                  color: AppColors.primaryColor,
+                                  width: 1.6
                               ),
                             ),
-
-                            const SizedBox(width: 20,),
-
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: (){
-                                  if(pastry.addedToCart){
-                                    BlocProvider.of<ShoppingCartCubit>(context)
-                                        .removeFromShoppingCart(
-                                        pastry,
-                                        index,
-                                        _decideList(context)
-                                    );
-                                    Fluttertoast.showToast(
-                                        msg: "Item Removed To Cart",
-                                        toastLength: Toast.LENGTH_LONG,
-                                        gravity: ToastGravity.CENTER,
-                                        timeInSecForIosWeb: 1,
-                                        backgroundColor: AppColors.primaryColor
-                                    );
-                                  }else{
-                                    BlocProvider.of<ShoppingCartCubit>(context)
-                                        .addToShoppingCart(
-                                        pastry,
-                                        index,
-                                        _decideList(context)
-                                    );
-
-                                    Fluttertoast.showToast(
-                                        msg: "Item Added To Cart",
-                                        toastLength: Toast.LENGTH_LONG,
-                                        gravity: ToastGravity.CENTER,
-                                        timeInSecForIosWeb: 1,
-                                        backgroundColor: AppColors.primaryColor
-                                    );
-                                  }
-
-                                  popView(context);
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(32),
-                                    border: Border.all(
-                                        color: AppColors.primaryColor,
-                                        width: 1.6
-                                    ),
-                                  ),
-                                  padding: const EdgeInsets.all(14),
-                                  child: Center(
-                                    child: Text(
-                                      pastry.addedToCart ? 'Remove From Cart' : 'Add To Cart',
-                                      style: Theme.of(context).textTheme
-                                          .headline2?.copyWith(color: AppColors.primaryColor),
-                                    ),
-                                  ),
-                                ),
+                            padding: const EdgeInsets.all(14),
+                            child: Center(
+                              child: Text(
+                                pastry.addedToCart ? 'Remove From Cart' : 'Add To Cart',
+                                style: Theme.of(context).textTheme
+                                    .headline2?.copyWith(color: AppColors.primaryColor),
                               ),
-                            )
-                          ],
+                            ),
+                          ),
                         )
                     )
                   ],
                 ),
             ),
 
-            Positioned(
-                right: size.width * .38,
-                top: size.height * .56,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryColor,
-                    borderRadius: BorderRadius.circular(32)
-                  ),
-                  padding: const EdgeInsets.only(
-                    top: 8,
-                    right: 12,
-                    bottom: 8,
-                    left: 12
-                  ),
-                  child: Row(
-                    children: [
-                      const Icon(
-                        FeatherIcons.minus,
-                        color: Colors.white,
-                        size: 14,
-                      ),
-
-                      const SizedBox(width: 16,),
-
-                      Text(
-                        '0',
-                        style: Theme.of(context).textTheme
-                            .headline2?.copyWith(color: Colors.white),
-                      ),
-
-                      const SizedBox(width: 16,),
-
-                      const Icon(
-                        Icons.add,
-                        color: Colors.white,
-                        size: 18,
-                      ),
-                    ],
-                  ),
-                )
-            ),
 
             Positioned(
               left: 18,

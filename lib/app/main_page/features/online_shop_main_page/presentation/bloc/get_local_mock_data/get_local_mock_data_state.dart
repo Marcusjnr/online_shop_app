@@ -29,3 +29,5 @@ class GetLocalMockDataLoaded extends GetLocalMockDataState{
   @override
   List<Object> get props => [];
 }
+
+

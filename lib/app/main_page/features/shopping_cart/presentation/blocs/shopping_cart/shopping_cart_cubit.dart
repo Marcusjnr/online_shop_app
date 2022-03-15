@@ -25,7 +25,6 @@ class ShoppingCartCubit extends Cubit<ShoppingCartState>{
       ){
     addToCartUseCase.call(pastry, shoppingCartList);
 
-    print('shopping cart lenght is ${shoppingCartList.length}');
     PastryModel pastryModel = pastry.copyWith(addedToCart: true);
 
     pastryList = updatePasteryInListUseCase.call(
@@ -41,13 +40,35 @@ class ShoppingCartCubit extends Cubit<ShoppingCartState>{
       ){
     removeFromCartUseCase.call(pastry, shoppingCartList);
 
-    print('shopping cart lenght is ${shoppingCartList.length}');
     PastryModel pastryModel = pastry.copyWith(addedToCart: false);
 
     pastryList = updatePasteryInListUseCase.call(
         indexOfPastery, pastryList, pastryModel);
 
     emit(ShoppingCartItemAdded(shoppingCartList));
+  }
+
+  addQuantity(PastryModel pastry, int index){
+
+    PastryModel replacePastry = pastry.copyWith(
+        quantity: pastry.quantity + 1,
+      price: pastry.price * 2
+    );
+
+    shoppingCartList[index] = replacePastry;
+    
+    emit(ShoppingCartQuantityChanged());
+  }
+
+  subtractQuantity(PastryModel pastry, int index){
+    PastryModel replacePastry = pastry.copyWith(
+        quantity: pastry.quantity - 1,
+        price: pastry.price / 2
+    );
+
+    shoppingCartList[index] = replacePastry;
+
+    emit(ShoppingCartQuantityChanged());
   }
 
 

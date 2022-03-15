@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:online_shop_app/app/main_page/features/online_shop_main_page/data/models/pastry_model.dart';
 
 abstract class ShoppingCartState{
@@ -21,5 +20,11 @@ class ShoppingCartItemRemoved extends ShoppingCartState{
   final List<PastryModel> shoppingCartList;
 
   const ShoppingCartItemRemoved(this.shoppingCartList);
+
+}
+
+class ShoppingCartQuantityChanged extends ShoppingCartState{
+
+  const ShoppingCartQuantityChanged();
 
 }

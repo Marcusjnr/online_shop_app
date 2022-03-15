@@ -28,7 +28,6 @@ class GetLocalMockDataCubit extends Cubit<GetLocalMockDataState>{
     ));
   }
 
-
   manageLists(List<PastryModel>? allPastryList){
 
     for (var pastery in allPastryList!) {

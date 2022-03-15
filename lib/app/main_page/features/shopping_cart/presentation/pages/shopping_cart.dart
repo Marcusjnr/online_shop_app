@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_shop_app/app/main_page/features/shopping_cart/presentation/blocs/shopping_cart/shopping_cart_cubit.dart';
+import 'package:online_shop_app/app/main_page/features/shopping_cart/presentation/blocs/shopping_cart/shopping_cart_state.dart';
 import 'package:online_shop_app/app/main_page/features/shopping_cart/presentation/widgets/cart_item.dart';
 import 'package:online_shop_app/utils/navigation_service.dart';
 
@@ -67,12 +69,25 @@ class ShoppingCart extends StatelessWidget {
         ],
       );
     }
-    return ListView.builder(
-        itemCount: shoppingCartCubit.shoppingCartList.length,
-        itemBuilder: (context, index) => CartItem(
-          pastry: shoppingCartCubit.shoppingCartList[index],
-          index: index,
-        )
+    return BlocConsumer<ShoppingCartCubit, ShoppingCartState>(
+        listener: (context, shoppingState){},
+        builder: (context, shoppingState){
+          return ListView.builder(
+              itemCount: shoppingCartCubit.shoppingCartList.length,
+              itemBuilder: (context, index) => CartItem(
+                pastry: shoppingCartCubit.shoppingCartList[index],
+                index: index,
+                addClicked: (){
+                  shoppingCartCubit.addQuantity(
+                      shoppingCartCubit.shoppingCartList[index], index);
+                },
+                subtractClicked: (){
+                  shoppingCartCubit.subtractQuantity(
+                      shoppingCartCubit.shoppingCartList[index], index);
+                },
+              )
+          );
+        },
     );
   }
 }

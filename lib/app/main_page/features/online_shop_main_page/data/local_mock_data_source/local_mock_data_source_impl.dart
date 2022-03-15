@@ -10,7 +10,7 @@ class LocalMockDataSourceImpl implements LocalMockDataSource{
       //Over popular
       PastryModel(
           name: 'Cream Doughnut',
-          image: 'assets/images/raster/doughnut.png',
+          image: 'assets/images/raster/doughnut.jpg',
           rating: 4.2,
           price: 20,
           pastryType: PastryType.OVERPOPULAR,
@@ -21,7 +21,7 @@ class LocalMockDataSourceImpl implements LocalMockDataSource{
 
       PastryModel(
           name: 'Ice Cream',
-          image: 'assets/images/raster/doughnut.png',
+          image: 'assets/images/raster/ice_cream.jpg',
           rating: 4.2,
           price: 19,
           pastryType: PastryType.OVERPOPULAR,
@@ -32,7 +32,7 @@ class LocalMockDataSourceImpl implements LocalMockDataSource{
 
       PastryModel(
           name: 'Cake',
-          image: 'assets/images/raster/doughnut.png',
+          image: 'assets/images/raster/cake.jpg',
           rating: 3.0,
           price: 22,
           pastryType: PastryType.OVERPOPULAR,
@@ -43,7 +43,7 @@ class LocalMockDataSourceImpl implements LocalMockDataSource{
 
       PastryModel(
           name: 'Wheat Bread',
-          image: 'assets/images/raster/doughnut.png',
+          image: 'assets/images/raster/wheat_bread.jpg',
           rating: 4.2,
           price: 20,
           pastryType: PastryType.OVERPOPULAR,
@@ -55,7 +55,7 @@ class LocalMockDataSourceImpl implements LocalMockDataSource{
       //Recommended
       PastryModel(
           name: 'Cherry Pie',
-          image: 'assets/images/raster/doughnut.png',
+          image: 'assets/images/raster/cherry_pie.jpg',
           rating: 4.2,
           price: 20,
           pastryType: PastryType.RECOMMENDED,
@@ -66,7 +66,7 @@ class LocalMockDataSourceImpl implements LocalMockDataSource{
 
       PastryModel(
           name: 'Cinnamon Roll',
-          image: 'assets/images/raster/doughnut.png',
+          image: 'assets/images/raster/cinnamon.jpg',
           rating: 3.2,
           price: 20,
           pastryType: PastryType.RECOMMENDED,
@@ -77,7 +77,7 @@ class LocalMockDataSourceImpl implements LocalMockDataSource{
 
       PastryModel(
           name: 'Cronut',
-          image: 'assets/images/raster/doughnut.png',
+          image: 'assets/images/raster/cronut.jpg',
           rating: 4.2,
           price: 20,
           pastryType: PastryType.RECOMMENDED,
@@ -88,7 +88,7 @@ class LocalMockDataSourceImpl implements LocalMockDataSource{
 
       PastryModel(
           name: 'Curry Puff',
-          image: 'assets/images/raster/doughnut.png',
+          image: 'assets/images/raster/curry_puff.jpg',
           rating: 4.2,
           price: 20,
           pastryType: PastryType.RECOMMENDED,
@@ -99,8 +99,8 @@ class LocalMockDataSourceImpl implements LocalMockDataSource{
 
       //Today's special
       PastryModel(
-          name: 'Schneeball',
-          image: 'assets/images/raster/doughnut.png',
+          name: 'Peach Cobbler',
+          image: 'assets/images/raster/peach_cubbler.jpg',
           rating: 4.2,
           price: 20,
           pastryType: PastryType.TODAYSPECIAL,
@@ -110,8 +110,8 @@ class LocalMockDataSourceImpl implements LocalMockDataSource{
       ),
 
       PastryModel(
-          name: 'Schnecken',
-          image: 'assets/images/raster/doughnut.png',
+          name: 'Apple Pie',
+          image: 'assets/images/raster/apple_pie.jpg',
           rating: 4.2,
           price: 20,
           pastryType: PastryType.TODAYSPECIAL,
@@ -121,8 +121,8 @@ class LocalMockDataSourceImpl implements LocalMockDataSource{
       ),
 
       PastryModel(
-          name: 'Berliner',
-          image: 'assets/images/raster/doughnut.png',
+          name: 'Molasses Pie',
+          image: 'assets/images/raster/molasses_pie.jpg',
           rating: 4.2,
           price: 20,
           pastryType: PastryType.TODAYSPECIAL,
@@ -132,8 +132,8 @@ class LocalMockDataSourceImpl implements LocalMockDataSource{
       ),
 
       PastryModel(
-          name: 'Haddekuche',
-          image: 'assets/images/raster/doughnut.png',
+          name: 'Banana Pancakes',
+          image: 'assets/images/raster/banana_pancakes.jpg',
           rating: 4.2,
           price: 20,
           pastryType: PastryType.TODAYSPECIAL,

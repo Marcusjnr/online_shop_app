@@ -91,26 +91,6 @@ class MainPage extends StatelessWidget {
 
               const SizedBox(height: 20,),
 
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(14),
-                  color: AppColors.accentColor,
-                ),
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Search here...',
-                      hintStyle: Theme.of(context).textTheme.subtitle1,
-                      prefixIcon: Icon(
-                        FeatherIcons.search,
-                        color: AppColors.primaryColor.withOpacity(.8),
-                        size: 18,
-                      )
-                  ),
-
-                ),
-              ),
-
               HomeDisplayItem(
                 title: 'Over Popular Items',
                 onTap: (pastery, index){
