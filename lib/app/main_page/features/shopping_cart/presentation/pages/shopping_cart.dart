@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:online_shop_app/app/main_page/features/shopping_cart/presentation/blocs/shopping_cart/shopping_cart_cubit.dart';
 import 'package:online_shop_app/app/main_page/features/shopping_cart/presentation/widgets/cart_item.dart';
-import 'package:online_shop_app/styles/color.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:online_shop_app/utils/navigation_service.dart';
 
 class ShoppingCart extends StatelessWidget {
-  const ShoppingCart({Key? key}) : super(key: key);
+  final ShoppingCartCubit shoppingCartCubit;
+
+  const ShoppingCart({
+    Key? key,
+    required this.shoppingCartCubit
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -30,12 +36,43 @@ class ShoppingCart extends StatelessWidget {
         centerTitle: true,
       ),
       body: Container(
+        width: size.width,
+        height: size.height,
         padding: const EdgeInsets.all(16),
-        child: ListView.builder(
-            itemCount: 4,
-            itemBuilder: (context, index) => CartItem()
-        ),
+        child: decideLayout(context),
       ),
+    );
+  }
+
+  Widget decideLayout(BuildContext context){
+    if(shoppingCartCubit.shoppingCartList.isEmpty){
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+              'assets/images/raster/cart.png',
+            width: 100,
+            height: 100,
+          ),
+
+          const SizedBox(height: 20,),
+
+          Text(
+            'Your Cart is Empty',
+            style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                color: Colors.grey,
+              fontSize: 20
+            ),
+          )
+        ],
+      );
+    }
+    return ListView.builder(
+        itemCount: shoppingCartCubit.shoppingCartList.length,
+        itemBuilder: (context, index) => CartItem(
+          pastry: shoppingCartCubit.shoppingCartList[index],
+          index: index,
+        )
     );
   }
 }

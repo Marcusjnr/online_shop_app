@@ -7,6 +7,7 @@ import 'package:online_shop_app/app/main_page/features/online_shop_main_page/pre
 import 'package:online_shop_app/app/main_page/features/shopping_cart/presentation/blocs/shopping_cart/shopping_cart_cubit.dart';
 import 'package:online_shop_app/core/enums/pastry_type.dart';
 import 'package:online_shop_app/styles/color.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:online_shop_app/utils/navigation_service.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -263,7 +264,47 @@ class DetailsPage extends StatelessWidget {
                 ),
             ),
 
+            Positioned(
+                right: size.width * .38,
+                top: size.height * .56,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryColor,
+                    borderRadius: BorderRadius.circular(32)
+                  ),
+                  padding: const EdgeInsets.only(
+                    top: 8,
+                    right: 12,
+                    bottom: 8,
+                    left: 12
+                  ),
+                  child: Row(
+                    children: [
+                      const Icon(
+                        FeatherIcons.minus,
+                        color: Colors.white,
+                        size: 14,
+                      ),
 
+                      const SizedBox(width: 16,),
+
+                      Text(
+                        '0',
+                        style: Theme.of(context).textTheme
+                            .headline2?.copyWith(color: Colors.white),
+                      ),
+
+                      const SizedBox(width: 16,),
+
+                      const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 18,
+                      ),
+                    ],
+                  ),
+                )
+            ),
 
             Positioned(
               left: 18,

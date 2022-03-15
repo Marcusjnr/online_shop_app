@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_shop_app/app/main_page/features/online_shop_main_page/data/models/pastry_model.dart';
+import 'package:online_shop_app/app/main_page/features/shopping_cart/presentation/blocs/shopping_cart/shopping_cart_cubit.dart';
 import 'package:online_shop_app/styles/color.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({Key? key}) : super(key: key);
+  final PastryModel pastry;
+  final int index;
+
+  const CartItem({
+    Key? key,
+    required this.pastry,
+    required this.index
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +29,15 @@ class CartItem extends StatelessWidget {
             color: Colors.white,
           ),
         ),
+        onDismissed: (_){
+          ShoppingCartCubit shoppingCartCubit = BlocProvider.of<ShoppingCartCubit>(context);
+
+         shoppingCartCubit.removeFromShoppingCart(
+              pastry,
+              index,
+              shoppingCartCubit.shoppingCartList
+         );
+        },
         child: Padding(
           padding: const EdgeInsets.only(bottom: 16.0),
           child: Row(
@@ -47,7 +66,7 @@ class CartItem extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            'Facial Cleaner',
+                            pastry.name,
                             style: Theme.of(context).textTheme.headline2?.copyWith(
                                 color: AppColors.primaryColor
                             ),
@@ -67,7 +86,7 @@ class CartItem extends StatelessWidget {
                         children: [
                           Expanded(
                               child: Text(
-                                '\$19',
+                                '\$${pastry.price.toString()}',
                                 style: Theme.of(context).textTheme.headline2,
                               )
                           ),
@@ -91,7 +110,7 @@ class CartItem extends StatelessWidget {
 
                                   const SizedBox(width: 8,),
                                   Text(
-                                    '1',
+                                    pastry.quantity.toString(),
                                     style: Theme.of(context).textTheme.subtitle1?.copyWith(
                                         fontSize: 14
                                     ),
