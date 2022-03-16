@@ -195,7 +195,7 @@ class DetailsPage extends StatelessWidget {
                                   _decideList(context)
                               );
                               Fluttertoast.showToast(
-                                  msg: "Item Removed To Cart",
+                                  msg: "Item Removed From Cart",
                                   toastLength: Toast.LENGTH_LONG,
                                   gravity: ToastGravity.CENTER,
                                   timeInSecForIosWeb: 1,
@@ -243,6 +243,47 @@ class DetailsPage extends StatelessWidget {
                 ),
             ),
 
+            // Positioned(
+            //     right: size.width * .38,
+            //     top: size.height * .56,
+            //     child: Container(
+            //       decoration: BoxDecoration(
+            //           color: AppColors.primaryColor,
+            //           borderRadius: BorderRadius.circular(32)
+            //       ),
+            //       padding: const EdgeInsets.only(
+            //           top: 8,
+            //           right: 12,
+            //           bottom: 8,
+            //           left: 12
+            //       ),
+            //       child: Row(
+            //         children: [
+            //           const Icon(
+            //             FeatherIcons.minus,
+            //             color: Colors.white,
+            //             size: 14,
+            //           ),
+            //
+            //           const SizedBox(width: 16,),
+            //
+            //           Text(
+            //             '0',
+            //             style: Theme.of(context).textTheme
+            //                 .headline2?.copyWith(color: Colors.white),
+            //           ),
+            //
+            //           const SizedBox(width: 16,),
+            //
+            //           const Icon(
+            //             Icons.add,
+            //             color: Colors.white,
+            //             size: 18,
+            //           ),
+            //         ],
+            //       ),
+            //     )
+            // ),
 
             Positioned(
               left: 18,
