@@ -71,6 +71,27 @@ lib/
 ## 🤓 Author(s)
 **Okocha Ebube**
 
+## 📖 References
+
+##Icons FlatIcon
+* [Calories icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/calories)
+* [Clock icons created by justicon - Flaticon](https://www.flaticon.com/free-icons/clock)
+* [Empty icons created by Flat Icons - Flaticon](https://www.flaticon.com/free-icons/empty)
+* [Empty icons created by Flat Icons - Flaticon](https://www.flaticon.com/free-icons/empty)
+
+##Images Unsplash
+* [Dovile Ramoskaite](https://unsplash.com/@dovilerm?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+* [Deva Williamson](https://unsplash.com/@biglaughkitchen?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+* [Vicky Ng](https://unsplash.com/@vickyng?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+* [Didi Miam](https://unsplash.com/@dilja96?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+* [renee baude](https://unsplash.com/@reneetarantowskibaude?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+* [Marcus Wallis](https://unsplash.com/@marcus_wallis?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+* [Esperanza Doronila](https://unsplash.com/@edoronila?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+* [Hanne Hoogendam](https://unsplash.com/@dadivafoodstyling?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+* [Didi Miam](https://unsplash.com/@dilja96?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+* [Alex Lvrs](https://unsplash.com/@alexlvrs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+* [Eiliv-Sonas Aceron](https://unsplash.com/@shootdelicious?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
+
 
 ## 🔖 LICENCE
 [Apache-2.0]
