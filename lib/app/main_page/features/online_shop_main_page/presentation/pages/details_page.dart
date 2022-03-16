@@ -10,6 +10,8 @@ import 'package:online_shop_app/styles/color.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:online_shop_app/utils/navigation_service.dart';
 
+import 'main_page/main_page.dart';
+
 class DetailsPage extends StatelessWidget {
   final String image;
   final PastryModel pastry;
@@ -218,7 +220,7 @@ class DetailsPage extends StatelessWidget {
                               );
                             }
 
-                            popView(context);
+                            navigateReplace(context, const MainPage());
                           },
                           child: Container(
                             decoration: BoxDecoration(

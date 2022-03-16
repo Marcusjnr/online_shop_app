@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_shop_app/app/main_page/features/online_shop_main_page/data/models/pastry_model.dart';
+import 'package:online_shop_app/app/main_page/features/shopping_cart/presentation/blocs/shopping_cart/shopping_cart_cubit.dart';
+import 'package:online_shop_app/app/main_page/features/shopping_cart/presentation/blocs/shopping_cart/shopping_cart_state.dart';
 import 'package:online_shop_app/styles/color.dart';
 
 class ItemsContainer extends StatelessWidget {
@@ -96,6 +99,15 @@ class ItemsContainer extends StatelessWidget {
                           pastry.favourite ? Icons.favorite : Icons.favorite_outline_rounded,
                           color: Colors.white,
                         ),
+                      )
+                  ),
+
+                  Positioned(
+                      left: 6,
+                      top: 8,
+                      child: Icon(
+                        pastry.addedToCart ? Icons.shopping_cart : Icons.remove_shopping_cart_outlined,
+                        color: Colors.white,
                       )
                   )
                 ],
