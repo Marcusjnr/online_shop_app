@@ -43,8 +43,8 @@ flutter pub get
 * [Get it](https://pub.dev/packages/get_it)
 
 ## 📸 ScreenShots
-|<img src="ss/1.png" width="400">|<img src="ss/3.png" width="400">|
-|<img src="ss/4.png" width="400">|
+|<img src="ss/1.png" width="400">|<img src="ss/2.png" width="400">|
+|<img src="ss/3.png" width="400">|<img src="ss/4.png" width="400">|
 
 ### Folder Structure
 Here is the core folder structure which flutter provides.
